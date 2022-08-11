@@ -1,1 +1,129 @@
+//1.Создайте кортеж для двух человек с одинаковыми типами данных и параметрами.
+//При том одни значения доставайте по индексу, а другие — по параметру.
+
+import Foundation
+
+
+let Man1 = (name: "Victor", surname: "Petrov", age: 25, weight: 80, Height: 175)
+let Man2 = (name: "Victor", surname: "Petrov", age: 25, weight: 80, Height: 175)
+
+// Печать значения картеджа по индексу
+
+print(Man1.1)
+
+// Печать значения картеджа по параметру
+
+print(Man2.surname)
+
+//2.Создайте массив «дни в месяцах» (12 элементов содержащих количество дней в соответствующем месяце).
+//Используя цикл for и этот массив:
+
+// Массив - количество дней по месяцам, без названия месяцевprint("Вывод количество дней в месяцах:")
+
+let DayMonth = [31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31]
+    print("")
+for daymonth in DayMonth {
+    print(daymonth)
+}
+
+// Название месяцев в году
+
+let NameMonth = ["Januaru" , "February" , "March" , "April" , "May" , "June" , "Jule" , "August" , "September" , "Oktober" , "November" , "December"]
+
+//  Вывод название месяцев и количества дней в месяце
+   
+    print("")
+    print("Вывод название месяцев и количества дней в месяце:")
+    print("")
+for (index, value) in NameMonth.enumerated() {
+    print("\(value):\(DayMonth[index])")
+    
+}
+//  Kортеж с параметрами (имя месяца, количество дней)
+
+let DayMonthK = (Januaru:31 , February:28 , March:31 , April:30 , May:31 , June:30 , Jule:31 , August:31 , September:30 , Oktober:31 , November:30 , December:31)
+
+//Вывод название месяцев и количества дней в месяце из кортежа
+
+    print("")
+    print("Вывод название месяцев и количества дней в месяце из кортежа:")
+    print("")
+    print(DayMonthK)
+
+//  Вывод месяцев и дней в обратном порядке
+    print("")
+    print("Вывод в обратном порядке название месяцев и количества дней в месяце:")
+    print("")
+for (index, value) in NameMonth.enumerated().reversed() {
+    print("\(value):\(DayMonth[index])")
+
+}
+//Для произвольно выбранной даты (месяц и день) посчитайте количество дней до конца года
+//выбрано 27 июля
+
+let month = "Jule"
+let DayInJule = DayMonthK.Jule
+let DataChoice = 27
+let DifferentDay = DayInJule - DataChoice
+var NewMass = DayMonth
+
+var i = 0
+while(NameMonth[i] != month) {
+NewMass.removeFirst()
+i = i + 1
+}
+
+let DayEndYear = NewMass.reduce(0, +) - DayInJule + DifferentDay
+    print("")
+    print("Дней до конца года осталось:\(DayEndYear)")
+    
+//3.Создайте словарь, как журнал студентов, где имя и фамилия студента это ключ, а оценка за экзамен — значение.
+
+
+var Journal:[String: Int] = ["Иван Петров ": 4, "Петр Иванов": 1, "Сергей Григорьев": 3, "Григорий Сергеев": 2, "Иван Иванов": 4]
+
+
+//Повысьте студенту оценку за экзамен
+ 
+Journal["Сергей Григорьев"] = 5
+
+//Если оценка положительная (4 или 5) или удовлетворительная (3), то выведите сообщение с
+//поздравлением, отрицательная (1, 2) - отправьте на пересдачу
+    
+    print("")
+    print("Вывод результатов экзаменов:")
+    print("")
+for (journal, evaluation) in Journal {
+    //print(journal, evaluation)
+    if evaluation <= 2 {
+        
+        print("\(journal) \(evaluation): Вам необходимо пересдать экзамен")
+        }
+    else { print("\(journal) \(evaluation): Поздравляем с успешной сдачей экзамена")
+        }
+}
+//Добавьте еще несколько студентов — это ваши новые одногруппники!
+
+Journal["Виктор Ульянов"] = 4
+Journal["Елена Фролова"] = 5
+Journal["Александр Смирнов"] = 3
+
+    print("Список группы с обновленным составом \(Journal)")
+    print("")
+//Удалите одного студента — он отчислен
+
+Journal["Петр Иванов"]=nil
+    print("")
+    print("Петр Иванов Вы отчисленны")
+    print("")
+//Посчитайте средний балл всей группы по итогам экзамена.
+
+var sume = 0
+for evaluation in  Journal.values {
+    sume = sume + evaluation
+    
+}
+print("В группе учится \(Journal.count) человек ")
+print("Общая сумма оценок по группе: \(sume)")
+print("Средний балл группы :\((sume)/(Journal.count))")
 
